@@ -11,23 +11,31 @@
 
 
     <div class="box" id="heading">
-        <h1> <%= dayOfWeek %> </h1>
+        <h1> <%= listTitle %> </h1>
     </div>
 
     <div class="box">
-        <% for (let i=0; i<newItems.length; i++){ %>
+        <% newItems.forEach(function(itens){ %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value="<%= itens._id %>" onchange="submit()">
+                    <p> <%= itens.name %> </p>
+                </div>
+                <input type="hidden" name="listName" value="<%= listTitle %>">
+            </form>
+        <% }) %>
+
+        <!-- <% for (let i=0; i<newItems.length; i++){ %>
         <div class="item">
         <input type="checkbox">
-            <p> <%= newItems[i] %> </p>
+            <p> <%= newItems[i].name %> </p>
         </div>
-        <% } %>
+        <% } %> -->
 
-        <form action="/", method="post">
-
+        <form class="item" action="/" method="post">
             <input type="text" name="newItem" placeholder="New Item", autocomplete="off">
-            <button type="submit" name="button" value="<%= dayOfWeek %>">+</button>
+            <button type="submit" name="button" value="<%= listTitle %>">+</button>
         </form>
-
     </div>
 
 
