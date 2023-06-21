@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
     password: String,
     googleId: String,
     facebookId: String,
-    secret: []
+    secret: String
 })
 
 userSchema.plugin(passportLocalMongoose);
